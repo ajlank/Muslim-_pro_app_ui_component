@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:muslim_pro_ui/core/colors/colors.dart';
-import 'package:muslim_pro_ui/core/images/images.dart';
 import 'package:muslim_pro_ui/latest_read_tile/latest_read_tile.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-// The root widget of the application.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -16,7 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LastReadCardWidget(),
+      theme: ThemeData(fontFamily: 'roboto'),
+      home: const LastReadCardWidget(),
     );
   }
 }
@@ -27,16 +24,22 @@ class LastReadCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey[300],
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            LastReadTile(
+            LatestReadTile(
               title: 'Last Read',
-              subtitle: 'Shahi Bukhari : 135',
-              iconPath: AppImages.iconImg,
-              backgroundPath: AppImages.bgImg,
+              subtitle: 'Shahi Bukhari: 135',
+              iconImg: 'assets/images/iconImg.svg',
+            ),
+            SizedBox(height: 100),
+            LatestReadTile(
+              title: 'Last Read',
+              subtitle: 'Shahi Bukhari: 135',
+              iconImg: 'assets/images/iconImg.svg',
+              trailing: '',
             ),
           ],
         ),

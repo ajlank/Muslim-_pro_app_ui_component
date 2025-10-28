@@ -1,90 +1,103 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:muslim_pro_ui/core/colors/colors.dart';
-import 'package:muslim_pro_ui/core/style/style.dart';
+import 'package:flutter_svg/svg.dart';
 
-class LastReadTile extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final String iconPath;
-  final String backgroundPath;
-
-  const LastReadTile({
+class LatestReadTile extends StatelessWidget {
+  const LatestReadTile({
     super.key,
     required this.title,
     required this.subtitle,
-    required this.iconPath,
-    required this.backgroundPath,
+    required this.iconImg,
+    this.trailing,
   });
+
+  final String title;
+  final String subtitle;
+  final String iconImg;
+  final String? trailing; // make it nullable
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     return Container(
-      width: AppStyle.parentContainerWidth,
-      height: AppStyle.parentContainerHeight,
+      width: width * 0.9,
+      height: 70,
       decoration: BoxDecoration(
-        color: AppColors.cardBackgroundColor,
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
+        image: DecorationImage(
+          image: AssetImage('assets/images/Vector.png'),
+          alignment: Alignment.bottomCenter,
+          fit: BoxFit.fitWidth,
+        ),
       ),
-      child: Stack(
-        children: [
-          // Icon
-          Positioned(
-            top: 16,
-            left: 13,
-            child: Container(
-              width: AppStyle.containerWidth,
-              height: AppStyle.containerHeight,
-              child: SvgPicture.asset(iconPath, fit: BoxFit.cover),
+      alignment: Alignment.center,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 11),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 40.0,
+                      height: 50.0,
+                      child: Center(
+                        child: SvgPicture.asset(iconImg, height: 40),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(width: 7),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        fontFamily: 'roboto',
+                        color: Color(0xFF36B084),
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    SizedBox(height: 4.0),
+                    Text(
+                      subtitle,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        fontFamily: 'poppins',
+                        color: Color(0xFF3D4953),
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ),
-          // Texts
-          Positioned(
-            left: 55,
-            top: 12,
-            child: Container(
-              height: 57,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+
+            // Only show trailing if it is not null
+            if (trailing != null)
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    title,
-                    style: TextStyle(
-                      fontFamily: 'roboto',
-                      color: AppColors.lastReadTextColor,
-                      fontSize: AppStyle.lastReadSize,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  SizedBox(height: 4.0),
-                  Text(
-                    subtitle,
-                    style: TextStyle(
+                    trailing!,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       fontFamily: 'poppins',
-                      color: AppColors.titleTextColor,
-                      fontSize: AppStyle.shahiBukhariTextSize,
-                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF3D4953),
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ],
               ),
-            ),
-          ),
-          // Background
-          Container(
-            height: 70,
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 23),
-              child: SvgPicture.asset(
-                backgroundPath,
-                width: 347,
-                height: 60,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
