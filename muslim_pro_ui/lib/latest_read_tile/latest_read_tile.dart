@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class LatestReadTile extends StatelessWidget {
-  const LatestReadTile({
+class LastReadTile extends StatelessWidget {
+  const LastReadTile({
     super.key,
     required this.title,
     required this.subtitle,
     required this.iconImg,
     this.trailing,
+    this.ontap
   });
 
   final String title;
   final String subtitle;
   final String iconImg;
-  final String? trailing; // make it nullable
+  final String? trailing;
+  final VoidCallback? ontap;
 
   @override
   Widget build(BuildContext context) {
