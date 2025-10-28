@@ -1,30 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:muslim_pro_ui/core/colors/colors.dart';
+import 'package:muslim_pro_ui/core/images/images.dart';
+import 'package:muslim_pro_ui/latest_read_tile/latest_read_tile.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
+// The root widget of the application.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: HomePage(),
+      debugShowCheckedModeBanner: false,
+      home: LastReadCardWidget(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class LastReadCardWidget extends StatelessWidget {
+  const LastReadCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            LastReadTile(
+              title: 'Last Read',
+              subtitle: 'Shahi Bukhari : 135',
+              iconPath: AppImages.iconImg,
+              backgroundPath: AppImages.bgImg,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
