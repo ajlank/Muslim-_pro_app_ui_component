@@ -6,7 +6,7 @@ class CreateTaskUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width=MediaQuery.of(context).size.width;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
@@ -33,17 +33,17 @@ class CreateTaskUi extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
           child: Column(
             children: [
-            
               TextField(
                 decoration: InputDecoration(
                   hintText: "Title is here",
                   hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                     color: Color(0xFF9EA1A6),
-                    fontWeight: FontWeight.w500,
-                    ),
+                    color: Color(0xFF9EA1A6),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding: const EdgeInsets.symmetric(
@@ -88,7 +88,7 @@ class CreateTaskUi extends StatelessWidget {
               const Spacer(),
               Container(
                 height: 61,
-           
+
                 decoration: BoxDecoration(
                   color: Color(0xFFFFFFFF),
                   borderRadius: BorderRadius.circular(12),

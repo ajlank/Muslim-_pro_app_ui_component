@@ -19,9 +19,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
-
-//last Read 
+//last Read
 class LastReadCardWidget extends StatelessWidget {
   const LastReadCardWidget({super.key});
 
