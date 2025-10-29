@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'roboto'),
-      home: CreateTaskUi(),
+      home: LastReadCardWidget(),
     );
   }
 }
@@ -39,12 +39,12 @@ class LastReadCardWidget extends StatelessWidget {
                 //add your navigation logic here
               },
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 20),
             LastReadTile(
               title: 'Last Read',
               subtitle: 'Shahi Bukhari: 135',
               iconImg: 'assets/images/iconImg.svg',
-              trailing: '',
+              trailing: 'الافتر',
               ontap: () {
                 //add your navigation logic here
               },
