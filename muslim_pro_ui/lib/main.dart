@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:muslim_pro_ui/create_task_ui/create_task_ui.dart';
+import 'package:muslim_pro_ui/hajj_videos/hajj_videos.dart';
+import 'package:muslim_pro_ui/hajj_videos_2/hajj_videos_two.dart';
 import 'package:muslim_pro_ui/last_read_tile/latest_read_tile.dart';
 import 'package:muslim_pro_ui/share_this_post/share_this_post.dart';
 
@@ -15,32 +17,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'roboto'),
-      home: ShareThisPost(
-        linkUrl: 'https://your-actual-link.com',
-        onFacebookTap: () {
-          // Facebook share logic
-        },
-        onTwitterTap: () {
-          // Twitter share logic
-        },
-        onLinkedInTap: () {
-          // LinkedIn share logic
-        },
-        onPinterestTap: () {
-          // Pinterest share logic
-        },
-        onCopyTap: () {
-          // Copy to clipboard logic
-        },
-        onCloseTap: () {},
-      ),
+      home: HajjVideosScreen(),
     );
   }
 }
 
-//share this post
-
-//last Read
 class ShareThisPostWidget extends StatelessWidget {
   const ShareThisPostWidget({super.key});
 
