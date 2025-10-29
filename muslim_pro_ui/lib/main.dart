@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:muslim_pro_ui/create_task_ui/create_task_ui.dart';
-import 'package:muslim_pro_ui/latest_read_tile/latest_read_tile.dart';
+import 'package:muslim_pro_ui/last_read_tile/latest_read_tile.dart';
 
 void main() {
   runApp(const MyApp());
