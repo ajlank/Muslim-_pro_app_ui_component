@@ -79,12 +79,12 @@ flutter:
     - family: roboto
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
-          weight: 400
+          weight: 500
 
     - family: poppins
       fonts:
         - asset: assets/fonts/Poppins-SemiBold.ttf
-          weight: 600
+          weight: 700
           
   #   - family: Trajan Pro
   #     fonts:
