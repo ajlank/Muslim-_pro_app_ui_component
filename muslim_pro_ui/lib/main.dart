@@ -213,38 +213,45 @@ class VideoControllerBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.55), // ✅ darker like screenshot
+        color: Color(0xFF202C2A), // ✅ darker like screenshot
         borderRadius: BorderRadius.circular(4), // ✅ smaller radius
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // ✅ Play icon (smaller & white)
-          const Icon(Icons.play_arrow, color: Colors.white, size: 20),
+          GestureDetector(
+            onTap: () {
+              print('Play button tapped');
+            },
+            child: const Icon(Icons.play_arrow, color: Colors.white, size: 20),
+          ),
           const SizedBox(width: 8),
 
           // ✅ Progress bar — thinner & accurate color
           Expanded(
-            child: SizedBox(
-              height: 6,
+            child: Container(
+              height: 17,
               child: Stack(
                 children: [
                   // Buffer progress (background bar)
                   LinearProgressIndicator(
+                    minHeight: 12,
                     value: 0.8,
-                    backgroundColor: Colors.white.withOpacity(0.20),
+                    backgroundColor: Colors.white.withValues(alpha: 0.20),
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      Colors.white.withOpacity(0.40),
+                      Colors.white.withValues(alpha: 0.40),
                     ),
                     borderRadius: BorderRadius.circular(3),
                   ),
 
                   // Played progress bar
                   LinearProgressIndicator(
+                    minHeight: 12,
                     value: 0.6,
                     backgroundColor: Colors.transparent,
                     valueColor: const AlwaysStoppedAnimation<Color>(
-                      Color(0xFF3DC995), // ✅ matched green to screenshot
+                      Color(0xFF36B084), // ✅ matched green to screenshot
                     ),
                     borderRadius: BorderRadius.circular(3),
                   ),

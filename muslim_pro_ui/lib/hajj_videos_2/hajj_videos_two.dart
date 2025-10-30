@@ -67,7 +67,7 @@ class HajjVideosTwo extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: 'roboto',
                   fontSize: 16,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w500,
                   color: Color(0xFF000000),
                 ),
               ),
@@ -112,7 +112,7 @@ class _MainVideoPlayer extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.15),
+              color: Colors.grey.withValues(alpha: 0.15),
               spreadRadius: 1,
               blurRadius: 8,
               offset: const Offset(0, 4),
@@ -176,7 +176,7 @@ class _MainVideoPlayer extends StatelessWidget {
                 'Hajj-Muslim pilgrims face losing out from online booking to Mecca',
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   fontFamily: 'roboto',
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                   fontSize: 16,
                   letterSpacing: 0,
                   color: Color(0xFF3D4953),
@@ -209,13 +209,12 @@ class _VideoListItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
       child: Container(
-        padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           color: AppColors.appBarAndCardBackground,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
+              color: Colors.grey.withValues(alpha: 0.1),
               spreadRadius: 1,
               blurRadius: 5,
               offset: const Offset(0, 2),
@@ -230,8 +229,8 @@ class _VideoListItem extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Container(
-                    width: 120,
-                    height: 80,
+                    width: 150,
+                    height: 105,
                     color: AppColors.placeholderBackground,
                     child: const Icon(
                       Icons.theaters,
@@ -274,34 +273,40 @@ class _VideoListItem extends StatelessWidget {
   }
 }
 
-/// A small red "Live" badge with a circle icon.
 class _LiveBadge extends StatelessWidget {
   const _LiveBadge();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
-      height: 20,
-      decoration: BoxDecoration(
-        color: Color(0xFFFF1313), // red background
-        borderRadius: BorderRadius.circular(12), // pill shape
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Icon(Icons.circle, color: Colors.white, size: 8), // small dot
-          const SizedBox(width: 4),
-          Text(
-            'Live',
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              fontFamily: 'roboto',
-              fontWeight: FontWeight.w400,
-              fontSize: 11,
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 5),
+        height: 18,
+        decoration: BoxDecoration(
+          color: Color(0xFFFF1313), // red background
+          borderRadius: BorderRadius.circular(12), // pill shape
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.circle,
               color: Colors.white,
+              size: 10,
+            ), // small dot
+            const SizedBox(width: 4),
+            Text(
+              'Live',
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                fontFamily: 'roboto',
+                fontWeight: FontWeight.w400,
+                fontSize: 12,
+                color: Color(0XFFffffff),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
