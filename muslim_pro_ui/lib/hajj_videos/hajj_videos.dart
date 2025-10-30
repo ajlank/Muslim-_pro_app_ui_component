@@ -6,8 +6,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 /// ------------------------------------------------------
 
 class HajjVideosScreen extends StatelessWidget {
-  const HajjVideosScreen({super.key});
+  const HajjVideosScreen({
+    super.key,
+    this.topTitle,
+    this.videoTitle,
+    this.videoPath,
+    this.liveTitle,
+    this.timerTitle,
+  });
+  final String? topTitle;
 
+  final String? videoTitle;
+  final String? videoPath;
+  final String? liveTitle;
+  final String? timerTitle;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,16 +31,18 @@ class HajjVideosScreen extends StatelessWidget {
         leading: IconButton(
           icon: SvgPicture.asset(
             'assets/images/leftarrow.svg',
-            height: 18, // Set the desired height
-            width: 18, // Set the desired width
+            height: 18,
+            width: 18,
+            color: const Color(0xFF3D4953), // ✅ Added color
           ),
           onPressed: () {},
         ),
+
         title: Text(
-          "Hajj Videos",
+          topTitle!,
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
             fontFamily: 'Poppins',
-            fontWeight: FontWeight.w800,
+            fontWeight: FontWeight.w700,
             fontSize: 19,
             letterSpacing: 0.2,
             color: Color(0xFF3D4953),
@@ -54,10 +68,10 @@ class HajjVideosScreen extends StatelessWidget {
               childAspectRatio: 1.1,
             ),
             itemBuilder: (context, index) {
-              return const VideoCard(
-                liveTitle: 'live',
-                videoTitle: 'This Eid al-Adha, the new rules for the ',
-                timerTitle: '52:25:00',
+              return VideoCard(
+                liveTitle: liveTitle,
+                videoTitle: videoTitle,
+                timerTitle: timerTitle,
               );
             },
           ),
@@ -194,20 +208,22 @@ class VideoCard extends StatelessWidget {
           // ✅ Title below thumbnail - Fixed to 2 lines with ellipsis
           Padding(
             padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-            child: SizedBox(
-              child: Text(
-                videoTitle!,
-                maxLines: 2,
+            child: Column(
+              children: [
+                Text(
+                  videoTitle!,
+                  maxLines: 2,
 
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  fontFamily: 'roboto',
-                  fontWeight: FontWeight.w800,
-                  overflow: TextOverflow.ellipsis,
-                  fontSize: 13,
-                  height: 1.3,
-                  color: Color(0xFF3D4953),
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    fontFamily: 'roboto',
+                    fontWeight: FontWeight.w500,
+                    overflow: TextOverflow.ellipsis,
+                    fontSize: 13,
+                    height: 1.3,
+                    color: Color(0xFF3D4953),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
         ],

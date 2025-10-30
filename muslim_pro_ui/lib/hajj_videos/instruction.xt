@@ -1,0 +1,11 @@
+
+
+
+HajjVideosScreen(
+        topTitle: 'Hajj Videos',
+        liveTitle: 'live',
+        videoTitle:
+            'Card widget that displays a video thumbnail and its title underneath.',
+        timerTitle: '52:25:00',
+        videoPath:''
+      ),

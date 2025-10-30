@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:muslim_pro_ui/main.dart';
 
 // You can copy and paste this entire code into your `main.dart` file and run it.
 
@@ -36,7 +37,8 @@ class HajjVideosTwo extends StatelessWidget {
           icon: SvgPicture.asset(
             'assets/images/leftarrow.svg',
             height: 18, // Set the desired height
-            width: 18, // Set the desired width
+            width: 18,
+            color: Color(0xFF3D4953), // Set the desired width
           ),
           onPressed: () {},
         ),
@@ -151,7 +153,7 @@ class _MainVideoPlayer extends StatelessWidget {
                       gradient: LinearGradient(
                         colors: [
                           Colors.transparent,
-                          Colors.black.withOpacity(0.7),
+                          Colors.black.withValues(alpha: 0.7),
                         ],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -159,48 +161,11 @@ class _MainVideoPlayer extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Video controls
                 Positioned(
                   bottom: 8,
                   left: 8,
                   right: 8,
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.play_arrow,
-                        color: Colors.white,
-                        size: 28,
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: SizedBox(
-                          height: 5, // Height of the progress bar track
-                          child: LinearProgressIndicator(
-                            value: 0.6, // 60% progress
-                            backgroundColor: AppColors.videoProgressBackground,
-                            valueColor: const AlwaysStoppedAnimation<Color>(
-                              AppColors.videoProgress,
-                            ),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      const Icon(
-                        Icons.signal_cellular_alt_sharp,
-                        color: Colors.white,
-                        size: 20,
-                      ),
-                      const SizedBox(width: 12),
-                      const Icon(Icons.settings, color: Colors.white, size: 20),
-                      const SizedBox(width: 12),
-                      const Icon(
-                        Icons.fullscreen,
-                        color: Colors.white,
-                        size: 24,
-                      ),
-                    ],
-                  ),
+                  child: VideoControllerBar(),
                 ),
               ],
             ),
@@ -290,7 +255,8 @@ class _VideoListItem extends StatelessWidget {
                     title,
                     style: const TextStyle(
                       fontSize: 14,
-                      fontWeight: FontWeight.w500,
+                      fontFamily: 'roboto',
+                      fontWeight: FontWeight.w700,
                       color: AppColors.primaryText,
                     ),
                     maxLines: 2,
@@ -316,6 +282,7 @@ class _LiveBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+      height: 20,
       decoration: BoxDecoration(
         color: Color(0xFFFF1313), // red background
         borderRadius: BorderRadius.circular(12), // pill shape
