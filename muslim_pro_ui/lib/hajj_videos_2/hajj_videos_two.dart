@@ -336,3 +336,108 @@ class _DurationTag extends StatelessWidget {
     );
   }
 }
+///////////////////////////////////
+
+
+class VideoControllerBars extends StatelessWidget {
+  const VideoControllerBars({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        // Play button
+        Container(
+          height: 28,
+          width: 40,
+          margin: const EdgeInsets.only(left: 8),
+          decoration: BoxDecoration(
+            color: const Color(0xFF202C2A).withValues(alpha: 0.7),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: const Center(
+            child: Icon(Icons.play_arrow, color: Colors.white, size: 18),
+          ),
+        ),
+        const SizedBox(width: 3),
+
+        // Progress bar + right icons
+        Expanded(
+          child: Container(
+            height: 30,
+            margin: const EdgeInsets.only(right: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            decoration: BoxDecoration(
+              color: const Color(0xFF202C2A).withValues(alpha: 0.7),
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Row(
+              children: [
+                // Progress bar with layered background
+                Expanded(
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      // First background layer (semi-transparent white)
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(3),
+                        child: SizedBox(
+                          height: 10.5,
+
+                          child: LinearProgressIndicator(
+                            minHeight: 10,
+                            value: 0.64,
+                            backgroundColor: Colors.transparent,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.white.withValues(alpha: 0.17),
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // Foreground green progress
+                      Container(
+                        decoration: BoxDecoration(
+                          border: BoxBorder.all(color: Colors.white.withValues(alpha: 0.7)),
+
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(3),
+                          child: LinearProgressIndicator(
+                            minHeight: 10.5,
+                            value: 0.55,
+                            backgroundColor: Colors.transparent,
+                            valueColor: const AlwaysStoppedAnimation<Color>(
+                              Color(0xFF36B084),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(width: 10),
+
+                // Right icons
+                const Row(
+                  children: [
+                    Icon(
+                      Icons.signal_cellular_alt,
+                      color: Colors.white,
+                      size: 16,
+                    ),
+                    SizedBox(width: 10),
+                    Icon(Icons.settings, color: Colors.white, size: 16),
+                    SizedBox(width: 10),
+                    Icon(Icons.fullscreen, color: Colors.white, size: 18),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
